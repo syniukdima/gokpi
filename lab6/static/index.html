@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Розрахунок електричних навантажень</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <h1>Розрахунок електричних навантажень об'єктів</h1>
+
+  <form id="equipmentForm">
+    <div class="form-group">
+      <label for="equipmentType">Тип обладнання:</label>
+      <select id="equipmentType" required>
+        <option value="">Оберіть тип обладнання</option>
+        <option value="Шліфувальний верстат">Шліфувальний верстат</option>
+        <option value="Свердлильний верстат">Свердлильний верстат</option>
+        <option value="Фугувальний верстат">Фугувальний верстат</option>
+        <option value="Циркулярна пила">Циркулярна пила</option>
+        <option value="Прес">Прес</option>
+        <option value="Полірувальний верстат">Полірувальний верстат</option>
+        <option value="Фрезерний верстат">Фрезерний верстат</option>
+        <option value="Вентилятор">Вентилятор</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Кількість:</label>
+      <input type="number" id="quantity" required min="1">
+    </div>
+
+    <div class="form-group">
+      <label for="nominalPower">Номінальна потужність (кВт):</label>
+      <input type="number" id="nominalPower" required step="0.1">
+    </div>
+
+    <div class="form-group">
+      <label for="utilizationFactor">Коефіцієнт використання:</label>
+      <input type="number" id="utilizationFactor" required step="0.01" max="1">
+    </div>
+
+    <div class="form-group">
+      <label for="reactivePowerFactor">Коефіцієнт реактивної потужності:</label>
+      <input type="number" id="reactivePowerFactor" required step="0.01">
+    </div>
+
+    <div class="form-group">
+      <label for="efficiency">Коефіцієнт корисної дії:</label>
+      <input type="number" id="efficiency" value="0.92" step="0.01" max="1">
+    </div>
+
+    <div class="form-group">
+      <label for="powerFactor">Коефіцієнт потужності:</label>
+      <input type="number" id="powerFactor" value="0.9" step="0.01" max="1">
+    </div>
+
+    <div class="form-group">
+      <label for="voltage">Напруга (кВ):</label>
+      <input type="number" id="voltage" value="0.38" step="0.01">
+    </div>
+
+    <button type="submit" class="button">Додати обладнання</button>
+  </form>
+
+  <div id="equipmentList" class="card hidden">
+    <h3>Додане обладнання:</h3>
+    <ul id="equipmentItems"></ul>
+  </div>
+
+  <button id="calculateButton" class="button" disabled>Розрахувати</button>
+
+  <div id="results" class="card hidden"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

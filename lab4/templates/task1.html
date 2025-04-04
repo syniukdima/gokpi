@@ -1,0 +1,53 @@
+{{define "content"}}
+<div class="container">
+  <h2>Калькулятор перерізу кабеля</h2>
+
+  <form method="POST">
+    <div class="form-group">
+      <label for="voltage">Оберіть напругу підприємства:</label>
+      <select name="voltage" id="voltage">
+        <option value="6">6 кВт</option>
+        <option value="10">10 кВт</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="shortCircuitKA">Струм КЗ, кА:</label>
+      <input type="number" step="0.01" name="shortCircuitKA" id="shortCircuitKA" required>
+    </div>
+
+    <div class="form-group">
+      <label for="fictitiousPowerOffTime">Фіктивний час вимикання струму, с:</label>
+      <input type="number" step="0.01" name="fictitiousPowerOffTime" id="fictitiousPowerOffTime" required>
+    </div>
+
+    <div class="form-group">
+      <label for="transformerSubstationPower">Потужність ТП, кВт*А:</label>
+      <input type="number" step="0.01" name="transformerSubstationPower" id="transformerSubstationPower">
+    </div>
+
+    <div class="form-group">
+      <label for="calculatedLoad">Розрахункове навантаження, кВт*А:</label>
+      <input type="number" step="0.01" name="calculatedLoad" id="calculatedLoad" required>
+    </div>
+
+    <div class="form-group">
+      <label for="maxLoadTime">Час використання максимального навантаження, год/рік:</label>
+      <input type="number" name="maxLoadTime" id="maxLoadTime" required>
+    </div>
+
+    <button type="submit" class="button">Розрахувати</button>
+  </form>
+
+  {{if .Error}}
+  <div class="result error">
+    Будь ласка, введіть правильні числові значення!
+  </div>
+  {{else if .MinimalCableSection}}
+  <div class="result">
+    <p>Мінімальний переріз кабеля, мм^2: {{printf "%.2f" .MinimalCableSection}}</p>
+    <p>Переріз кабеля, який варто обрати, мм^2: {{printf "%.2f" .CableSection}}</p>
+  </div>
+  {{end}}
+</div>
+{{end}}

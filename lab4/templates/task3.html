@@ -1,0 +1,32 @@
+{{define "content"}}
+<div class="container">
+  <h2>Калькулятор опору підстанції</h2>
+
+  <form method="POST">
+    <div class="form-group">
+      <label for="mode">Оберіть режим роботи підстанції:</label>
+      <select name="mode" id="mode">
+        <option value="normal">Нормальний режим</option>
+        <option value="minimal">Мінімальний режим</option>
+        <option value="emergency">Аварійний режим (не передбачений)</option>
+      </select>
+    </div>
+
+    <button type="submit" class="button">Розрахувати</button>
+  </form>
+
+  {{if .Error}}
+  <div class="result error">
+    Аварійний режим не передбачений для цієї підстанції
+  </div>
+  {{else if .ResistanceR}}
+  <div class="result">
+    <p>Активний опір R = {{printf "%.2f" .ResistanceR}} Ом</p>
+    <p>Реактивний опір X = {{printf "%.2f" .ResistanceX}} Ом</p>
+    <p>Повний опір Z = {{printf "%.2f" .ResistanceZ}} Ом</p>
+    <p>Струм трифазного КЗ = {{printf "%.0f" .CurrentThreePhase}} А</p>
+    <p>Струм двофазного КЗ = {{printf "%.0f" .CurrentTwoPhase}} А</p>
+  </div>
+  {{end}}
+</div>
+{{end}}

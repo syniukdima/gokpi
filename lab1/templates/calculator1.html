@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор 1</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Калькулятор 1</h1>
+    <form id="calculator1Form">
+        <div class="input-group">
+            <input type="number" step="0.01" id="inputH" required placeholder="Водень (H), %">
+            <input type="number" step="0.01" id="inputC" required placeholder="Вуглець (C), %">
+            <input type="number" step="0.01" id="inputS" required placeholder="Сірка (S), %">
+            <input type="number" step="0.01" id="inputN" required placeholder="Азот (N), %">
+            <input type="number" step="0.01" id="inputO" required placeholder="Кисень (O), %">
+            <input type="number" step="0.01" id="inputW" required placeholder="Волога (W), %">
+            <input type="number" step="0.01" id="inputA" required placeholder="Зола (A), %">
+        </div>
+        <button type="submit" class="button">Розрахувати</button>
+    </form>
+
+    <div class="results">
+        <div class="result-section">
+            <h2>Суха маса</h2>
+            <div id="dryMassResults"></div>
+        </div>
+
+        <div class="result-section">
+            <h2>Горюча маса</h2>
+            <div id="combustibleMassResults"></div>
+        </div>
+
+        <div class="result-section">
+            <h2>Теплота згоряння</h2>
+            <div id="heatingValueResults"></div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/calculator1.js"></script>
+</body>
+</html>

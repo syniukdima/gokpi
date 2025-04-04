@@ -1,0 +1,22 @@
+{{define "layout"}}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Електротехнічний калькулятор</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <meta charset="UTF-8">
+</head>
+<body>
+<h1>Електротехнічний калькулятор</h1>
+
+<nav>
+  <a href="/" class="button">Головна</a>
+  <a href="/task1" class="button">Калькулятор перерізу кабеля</a>
+  <a href="/task2" class="button">Калькулятор струму КЗ</a>
+  <a href="/task3" class="button">Калькулятор опору</a>
+</nav>
+
+{{template "content" .}}
+</body>
+</html>
+{{end}}

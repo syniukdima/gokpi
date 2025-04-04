@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор прибутку від сонячних електростанцій</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Калькулятор прибутку від сонячних електростанцій</h1>
+
+    <form id="calculatorForm">
+        <div class="input-group">
+            <input type="number" step="0.01" id="averageDayPower" required>
+            <label for="averageDayPower">Середньодобова потужність сонячної електростанції, МВт</label>
+        </div>
+
+        <div class="input-group">
+            <input type="number" step="0.01" id="forecastRootMeanSquareDeviation" required>
+            <label for="forecastRootMeanSquareDeviation">Середньоквадратичне відхилення системи прогнозування, МВт</label>
+        </div>
+
+        <div class="input-group">
+            <input type="number" step="0.01" id="targetForecastRootMeanSquareDeviation" required>
+            <label for="targetForecastRootMeanSquareDeviation">Вдосконалене середньоквадратичне відхилення системи прогнозування, МВт</label>
+        </div>
+
+        <div class="input-group">
+            <input type="number" step="0.01" id="electricityPrice" required>
+            <label for="electricityPrice">Вартість електроенергії, грн / кВт*год</label>
+        </div>
+
+        <button type="submit">Розрахувати</button>
+    </form>
+
+    <div class="results">
+        <div class="result-group">
+            <h2>Було:</h2>
+            <p id="initialBalance">Баланс доходу/втрати, грн: </p>
+        </div>
+
+        <div class="result-group">
+            <h2>Стало:</h2>
+            <p id="newBalance">Баланс доходу/втрати, грн: </p>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/calculator.js"></script>
+</body>
+</html>

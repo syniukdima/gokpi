@@ -1,0 +1,44 @@
+{{define "content"}}
+<div class="container">
+    <h2>Калькулятор струму короткого замикання</h2>
+
+    <form method="POST">
+        <div class="form-group">
+            <label>Оберіть номінальну напругу ступені:</label>
+            <select name="nominalVoltage" id="nominalVoltage" disabled>
+                <option value="10.5">10.5 кВ</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="shortCircuitPower">Потужність КЗ, МВ·А:</label>
+            <input type="number" step="0.01" name="shortCircuitPower" id="shortCircuitPower" required>
+        </div>
+
+        <div class="form-group">
+            <label for="transformerPower">Номінальна потужність трансформатора, МВ·А:</label>
+            <input type="number" step="0.01" name="transformerPower" id="transformerPower" required>
+        </div>
+
+        <div class="form-group">
+            <label for="transformerVoltage">Напруга КЗ трансформатора, %:</label>
+            <input type="number" step="0.01" name="transformerVoltage" id="transformerVoltage" required>
+        </div>
+
+        <button type="submit" class="button">Розрахувати</button>
+    </form>
+
+    {{if .Error}}
+    <div class="result error">
+        Будь ласка, введіть правильні числові значення!
+    </div>
+    {{else if .SystemResistance}}
+    <div class="result">
+        <p>Опір системи, Ом: {{printf "%.2f" .SystemResistance}}</p>
+        <p>Опір трансформатора, Ом: {{printf "%.2f" .TransformerResistance}}</p>
+        <p>Сумарний опір, Ом: {{printf "%.2f" .TotalResistance}}</p>
+        <p>Початковий струм КЗ, кА: {{printf "%.2f" .ShortCircuitCurrent}}</p>
+    </div>
+    {{end}}
+</div>
+{{end}}

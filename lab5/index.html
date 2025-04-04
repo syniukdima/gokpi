@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор надійності</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<h1>Калькулятор надійності</h1>
+
+<div class="calculator">
+    <h2>Порівняння надійності одноколової та двоколової систем</h2>
+    <div class="form-group">
+        <label for="powerLineType">Тип лінії електропередачі:</label>
+        <select id="powerLineType">
+            <option value="ПЛ-110 кВ">ПЛ-110 кВ</option>
+            <option value="ПЛ-35 кВ">ПЛ-35 кВ</option>
+            <option value="ПЛ-10 кВ">ПЛ-10 кВ</option>
+            <option value="КЛ-10 кВ (траншея)">КЛ-10 кВ (траншея)</option>
+            <option value="КЛ-10 кВ (кабельний канал)">КЛ-10 кВ (кабельний канал)</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="powerLineLength">Довжина лінії (км):</label>
+        <input type="number" id="powerLineLength" step="0.1">
+    </div>
+
+    <div class="form-group">
+        <label for="numberOfConnections">Кількість приєднань 10 кВ:</label>
+        <input type="number" id="numberOfConnections">
+    </div>
+
+    <button onclick="calculateReliability1()">Розрахувати</button>
+
+    <div id="result1" class="result"></div>
+</div>
+
+<div class="calculator">
+    <h2>Розрахунок збитків від перерв електропостачання</h2>
+
+    <div class="form-info">
+        <h3>Параметри трансформатора 35 кВ:</h3>
+        <p>Частота відмов (ω): 0.01 рік⁻¹</p>
+        <p>Середній час відновлення (tв): 45 · 10⁻³ року</p>
+        <p>Середній час планового простою (kп): 4 · 10⁻³</p>
+        <p>Потужність (Pм): 5120 кВт</p>
+        <p>Час використання максимального навантаження (Tм): 6451 год/рік</p>
+    </div>
+
+    <div class="form-group">
+        <label for="emergencyLoss">Питомі збитки від аварійних вимкнень (грн/кВт·год):</label>
+        <input type="number" id="emergencyLoss" step="0.01">
+    </div>
+
+    <div class="form-group">
+        <label for="plannedLoss">Питомі збитки від планових вимкнень (грн/кВт·год):</label>
+        <input type="number" id="plannedLoss" step="0.01">
+    </div>
+
+    <button onclick="calculateReliability2()">Розрахувати</button>
+
+    <div id="result2" class="result"></div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

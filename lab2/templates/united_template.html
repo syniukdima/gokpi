@@ -1,0 +1,49 @@
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор викидів</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Калькулятор викидів</h1>
+
+<div class="input-group">
+    <input type="number" id="coalVolume" placeholder="Обсяг донецького газового вугілля марки ГР, т" step="0.01">
+</div>
+
+<div class="input-group">
+    <input type="number" id="oilFuelVolume" placeholder="Обсяг високосірчистого мазуту марки 40, т" step="0.01">
+</div>
+
+<div class="input-group">
+    <input type="number" id="naturalGasVolume" placeholder="Обсяг природного газу із газопроводу Уренгой-Ужгород, м3" step="0.01">
+</div>
+
+<button onclick="calculate()">Розрахувати</button>
+
+<div id="error" class="error">
+    Будь ласка, введіть правильні числові значення!
+</div>
+
+<div class="results-section">
+    <h3>Вугілля</h3>
+    <div id="coalSolidParticlesEmission"></div>
+    <div id="coalGrossEmission"></div>
+</div>
+
+<div class="results-section">
+    <h3>Мазут</h3>
+    <div id="oilFuelSolidParticlesEmission"></div>
+    <div id="oilFuelGrossEmission"></div>
+</div>
+
+<div class="results-section">
+    <h3>Природний газ</h3>
+    <div id="naturalGasSolidParticlesEmission"></div>
+    <div id="naturalGasGrossEmission"></div>
+</div>
+
+<script src="/js/united_js.js"></script>
+</body>
+</html>
